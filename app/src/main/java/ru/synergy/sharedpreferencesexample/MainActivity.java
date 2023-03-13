@@ -4,9 +4,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
@@ -28,6 +31,15 @@ public class MainActivity extends AppCompatActivity {
 //        btnSave.setOnClickListener(this);
 //        btnLoad.setOnClickListener(this);
         loadText();
+
+        et.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                saveText();
+                Log.d(SAVED_TEXT, et.getText().toString());
+                return true;
+            }
+        });
 
 
     }
